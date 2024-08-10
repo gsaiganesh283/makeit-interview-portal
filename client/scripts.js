@@ -240,18 +240,6 @@ document.addEventListener('DOMContentLoaded', function() {
     resizeTextarea();
 });
 
-// Ensure the textarea resizes based on its content
-document.addEventListener('DOMContentLoaded', function() {
-    const textarea = document.getElementById('code-editor');
-
-    function resizeTextarea() {
-        textarea.style.height = 'auto'; // Reset height
-        textarea.style.height = `${textarea.scrollHeight}px`; // Set height based on content
-    }
-
-    textarea.addEventListener('input', resizeTextarea);
-    resizeTextarea(); // Initial resize
-});
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -295,42 +283,9 @@ document.addEventListener("DOMContentLoaded", function() {
         editor.setOption("mode", mode);
         editor.setValue(templates[language]);
     });
-
-    // Handle reset button click
-    document.getElementById("reset-button").addEventListener("click", function() {
-        var language = document.getElementById("language-selector").value;
-        editor.setValue(templates[language]); // Reset the editor content to the template
-    });
-
-    // Handle run button click
-    document.getElementById("run-button").addEventListener("click", function() {
-        var code = editor.getValue();
-        var language = document.getElementById("language-selector").value;
-
-        fetch('/run', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                code: code,
-                language: language
-            }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            const outputElement = document.getElementById("output");
-            if (data.error) {
-                outputElement.textContent = `Error: ${data.error}`;
-            } else {
-                outputElement.textContent = `Output:\n${data.output}`;
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    });
 });
+
+
 
 
 var timeoutDuration = 1800 * 1000; // 30 minutes in milliseconds
