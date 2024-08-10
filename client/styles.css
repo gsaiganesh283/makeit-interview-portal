@@ -517,4 +517,16 @@ a:hover {
 
 
 
+/* Enlarged Interviewer Image */
+.interviewer img {
+  width: 150px;  /* Increase the size */
+  height: 150px; /* Maintain aspect ratio */
+  border-radius: 50%; /* Make it a circle if the image is square */
+  border: 2px solid #ccc; /* Optional border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add some shadow */
+  object-fit: cover; /* Ensure the image covers the area */
+}
+
+
+
 
