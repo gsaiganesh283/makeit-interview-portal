@@ -77,6 +77,17 @@ $conn->close();
                         <button class="submit-button">Submit</button>
                     </div>
 
+                    <div class="boxes-container">
+                        <div class="box" id="box-1">Test Case 1:
+                            <p>Input: 2 4</p>
+                            <p>Output: 2</p>
+                        </div>
+                        <div class="box" id="box-2">Test Case 2:
+                            <p>Input: 3 9</p>
+                            <p>Output: 3</p>
+                        </div>
+                    </div>
+                    
                     <div class="output-section">
                         <h3>Output:</h3>
                         <pre id="output"></pre>
