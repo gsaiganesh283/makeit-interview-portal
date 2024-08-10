@@ -42,13 +42,13 @@ $conn->close();
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
-    <style>
+    <!-- <style>
         #code-editor {
             height: 400px; /* Adjust height as needed */
             width: 100%;
             box-sizing: border-box;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
@@ -71,6 +71,19 @@ $conn->close();
                     </select>
 
                     <textarea id="code-editor" placeholder="Write your code here..."></textarea>
+                    
+
+                    <div class="boxes-container">
+                        <div class="box" id="box-1">Test Case 1:
+                            <p>Input: 2 4</p>
+                            <p>Output: 2</p>
+                        </div>
+                        <div class="box" id="box-2">Test Case 2:
+                            <p>Input: 3 9</p>
+                            <p>Output: 3</p>
+                        </div>
+                    </div>
+
                     <div class="code-controls">
                         <button class="run-button">Run</button>
                         <button class="reset-button" id="reset-button">Reset</button>
