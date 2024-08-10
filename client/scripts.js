@@ -222,3 +222,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const textarea = document.getElementById('code-editor');
+
+    // Function to resize textarea based on content
+    function resizeTextarea() {
+        textarea.style.height = 'auto'; // Reset height
+        textarea.style.height = `${textarea.scrollHeight}px`; // Set height based on content
+    }
+
+    // Event listener for input to dynamically resize
+    textarea.addEventListener('input', resizeTextarea);
+
+    // Initial resize
+    resizeTextarea();
+});
+
+// Ensure the textarea resizes based on its content
+document.addEventListener('DOMContentLoaded', function() {
+    const textarea = document.getElementById('code-editor');
+
+    function resizeTextarea() {
+        textarea.style.height = 'auto'; // Reset height
+        textarea.style.height = `${textarea.scrollHeight}px`; // Set height based on content
+    }
+
+    textarea.addEventListener('input', resizeTextarea);
+    resizeTextarea(); // Initial resize
+});
+
+
