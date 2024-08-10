@@ -1,6 +1,6 @@
 <?php
 // Database connection settings
-$servername = "localhost"; // Your database server
+$servername = "127.0.0.1:3306"; // Your database server
 $username = "root"; // Your database username
 $password = ""; // Your database password
 $dbname = "interview_platform"; // Your database name
