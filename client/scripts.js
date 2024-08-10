@@ -253,3 +253,53 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    var editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
+    lineNumbers: true,
+    mode: "python", // Default mode
+    theme: "dracula",
+    indentUnit: 4
+});
+
+// Language templates
+var templates = {
+    c: '#include <stdio.h>\n\nint main() {\n    // Your code here\n    return 0;\n}',
+    cpp: '#include <iostream>\n\nint main() {\n    // Your code here\n    return 0;\n}',
+    python: 'def main():\n    # Your code here\n    pass\n\nif __name__ == "__main__":\n    main()',
+    java: 'public class Main {\n    public static void main(String[] args) {\n        // Your code here\n    }\n}',
+    javascript: 'function main() {\n    // Your code here\n}\n\nmain();'
+};
+
+// Handle language selection
+document.getElementById("language-selector").addEventListener("change", function() {
+    var language = this.value;
+    var mode = '';
+
+    switch(language) {
+        case 'c':
+            mode = 'text/x-csrc';
+            break;
+        case 'cpp':
+            mode = 'text/x-c++src';
+            break;
+        case 'python':
+            mode = 'python';
+            break;
+        case 'java':
+            mode = 'text/x-java';
+            break;
+        case 'javascript':
+            mode = 'javascript';
+            break;
+    }
+
+    editor.setOption("mode", mode);
+    editor.setValue(templates[language]);
+});
+
+// Handle reset button click
+document.getElementById("reset-button").addEventListener("click", function() {
+    var language = document.getElementById("language-selector").value;
+    editor.setValue(templates[language]); // Reset the editor content to the template
+});
+});
