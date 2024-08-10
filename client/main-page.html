@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMirror Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+    <style>
+        #code-editor {
+            height: 400px; /* Adjust height as needed */
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h1>CodeMirror Example</h1>
+    <select id="language-selector">
+        <option value="c">C</option>
+        <option value="cpp">C++</option>
+        <option value="python" selected>Python</option>
+        <option value="java">Java</option>
+        <option value="javascript">JavaScript</option>
+    </select>
+    <textarea id="code-editor" placeholder="Write your code here..."></textarea>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/java/java.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
+                lineNumbers: true,
+                mode: "python", // Default mode
+                theme: "dracula",
+                indentUnit: 4
+            });
+
+            var templates = {
+                c: '#include <stdio.h>\n\nint main() {\n    // Your code here\n    return 0;\n}',
+                cpp: '#include <iostream>\n\nint main() {\n    // Your code here\n    return 0;\n}',
+                python: 'def main():\n    # Your code here\n    pass\n\nif __name__ == "__main__":\n    main()',
+                java: 'public class Main {\n    public static void main(String[] args) {\n        // Your code here\n    }\n}',
+                javascript: 'function main() {\n    // Your code here\n}\n\nmain();'
+            };
+
+            document.getElementById("language-selector").addEventListener("change", function() {
+                var language = this.value;
+                var mode = '';
+
+                switch(language) {
+                    case 'c':
+                        mode = 'text/x-csrc';
+                        break;
+                    case 'cpp':
+                        mode = 'text/x-c++src';
+                        break;
+                    case 'python':
+                        mode = 'python';
+                        break;
+                    case 'java':
+                        mode = 'text/x-java';
+                        break;
+                    case 'javascript':
+                        mode = 'javascript';
+                        break;
+                }
+
+                editor.setOption("mode", mode);
+                editor.setValue(templates[language]);
+            });
+        });
+    </script>
+</body>
+</html>
