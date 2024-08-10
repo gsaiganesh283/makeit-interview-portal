@@ -1,10 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-    var codeEditor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
-        mode: "javascript",
-        theme: "dracula",
-        lineNumbers: true
-    });
 
     document.querySelector('.run-button').addEventListener('click', function() {
         const code = codeEditor.getValue();
