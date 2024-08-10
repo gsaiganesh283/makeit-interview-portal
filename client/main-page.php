@@ -1,6 +1,6 @@
 <?php
 // Database connection settings
-$servername = "127.0.0.1:3307"; // Your database server
+$servername = "127.0.0.1:3306"; // Your database server
 $username = "root"; // Your database username
 $password = ""; // Your database password
 $dbname = "interview_platform"; // Your database name
@@ -71,11 +71,7 @@ $conn->close();
                     </select>
 
                     <textarea id="code-editor" placeholder="Write your code here..."></textarea>
-                    <div class="code-controls">
-                        <button class="run-button" id="run-button">Run</button>
-                        <button class="reset-button" id="reset-button">Reset</button>
-                        <button class="submit-button">Submit</button>
-                    </div>
+                    
 
                     <div class="boxes-container">
                         <div class="box" id="box-1">Test Case 1:
@@ -86,6 +82,12 @@ $conn->close();
                             <p>Input: 3 9</p>
                             <p>Output: 3</p>
                         </div>
+                    </div>
+
+                    <div class="code-controls">
+                        <button class="run-button" id="run-button">Run</button>
+                        <button class="reset-button" id="reset-button">Reset</button>
+                        <button class="submit-button">Submit</button>
                     </div>
                     
                     <div class="output-section">
