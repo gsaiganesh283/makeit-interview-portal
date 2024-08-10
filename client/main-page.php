@@ -1,9 +1,9 @@
 <?php
 // Database connection settings
-$servername = "localhost"; // Your database server
+$servername = "127.0.0.1:3307"; // Your database server
 $username = "root"; // Your database username
 $password = ""; // Your database password
-$dbname = "interview_platform"; // Your database name
+$dbname = "interview_platform"; // Your database namex
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -53,13 +53,17 @@ $conn->close();
 
 <body>
     <div class="container">
+     <header>
+         <h1>MakeIT</h1>
+         <button class="back-button">Back to Dashboard</button>
+     </header>
         <main>
             <div class="screen" id="screen-1">
                 <div class="code-section">
                     <div class="question-section">
                         <h2><?php echo htmlspecialchars($title); ?></h2>
-                        <p><?php echo nl2br(htmlspecialchars($description)); ?></p>
-                        <p><strong>Example:</strong> <?php echo nl2br(htmlspecialchars($example)); ?></p>
+                        <p class="questions"><?php echo nl2br(htmlspecialchars($description)); ?></p>
+                        <p class="questions"><strong>Example:</strong> <?php echo nl2br(htmlspecialchars($example)); ?></p>
                     </div>
 
                     <select id="language-selector">
@@ -73,22 +77,22 @@ $conn->close();
                     <textarea id="code-editor" placeholder="Write your code here..."></textarea>
                     
 
-                    <div class="boxes-container">
-                        <div class="box" id="box-1">Test Case 1:
-                            <p>Input: 2 4</p>
-                            <p>Output: 2</p>
-                        </div>
-                        <div class="box" id="box-2">Test Case 2:
-                            <p>Input: 3 9</p>
-                            <p>Output: 3</p>
-                        </div>
-                    </div>
-
                     <div class="code-controls">
                         <button class="run-button">Run</button>
                         <button class="reset-button" id="reset-button">Reset</button>
                         <button class="submit-button">Submit</button>
                     </div>
+
+                    <div class="boxes-container">
+                        <div class="box" id="box-1"><h4>Test Case 1: </h4><br><p class="para">Input: <?php echo htmlspecialchars($input); ?></p>
+                            <p class="para">Output: <?php echo htmlspecialchars($output); ?></p>
+                        </div>
+                        <div class="box" id="box-2"><h4>Test Case 2: </h4><br>
+                            <p class="para">Input: <?php echo htmlspecialchars($input); ?></p>
+                            <p class="para">Output: <?php echo htmlspecialchars($output); ?></p>
+                        </div>
+                    </div>
+
 
                     <div class="output-section">
                         <h3>Output:</h3>
