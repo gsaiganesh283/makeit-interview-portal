@@ -1,3 +1,37 @@
+<?php
+// Database connection settings
+$servername = "localhost"; // Your database server
+$username = "root"; // Your database username
+$password = ""; // Your database password
+$dbname = "interview_platform"; // Your database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// SQL query to get a question
+$sql = "SELECT title, description, example FROM questions WHERE id = 1"; // Change id as needed
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Fetch the question
+    $row = $result->fetch_assoc();
+    $title = $row['title'];
+    $description = $row['description'];
+    $example = $row['example'];
+} else {
+    $title = "No question found";
+    $description = "";
+    $example = "";
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,9 +54,9 @@
             <div class="screen" id="screen-1">
                 <div class="code-section">
                     <div class="question-section">
-                        <h2>Arrays & Hashing: Simplifying Email Addresses</h2>
-                        <p>Write a function to simplify email addresses by removing unnecessary characters.</p>
-                        <p><strong>Example:</strong> Given the input `["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]`, the function should return `2` because `testemail@leetcode.com` and `testemail@lee.tcode.com` are unique.</p>
+                        <h2><?php echo $title; ?></h2>
+                        <p><?php echo $description; ?></p>
+                        <p><strong>Example:</strong> <?php echo $example; ?></p>
                     </div>
 
                     <select id="language-selector">
