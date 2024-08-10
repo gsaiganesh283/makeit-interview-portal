@@ -1,25 +1,31 @@
-<?php
-session_start();
+<!DOCTYPE html>
+<html lang="en">
 
-// Set the session timeout duration (e.g., 1800 seconds = 30 minutes)
-$timeout_duration = 1800;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Linking to the external CSS file -->
+</head>
 
-// Check if the user is logged in
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    // Check if the session has timed out
-    if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $timeout_duration) {
-        // Session has timed out
-        session_unset();     // Unset all session variables
-        session_destroy();   // Destroy the session
-        header("Location: login.php?timeout=true"); // Redirect to login page with timeout message
-        exit();
-    }
+<body>
+    <div class="container">
+        <form action="authenticate.php" method="POST">
+            <h1>Login</h1>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
 
-    // Update last activity time
-    $_SESSION['last_activity'] = time();
-} else {
-    // If not logged in, redirect to login page
-    header("Location: login.php");
-    exit();
-}
-?>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+
+            <!-- Link to registration page -->
+            <p>
+                Don't have an account? <a href="register.php" target="_blank">Register here</a>.
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>
