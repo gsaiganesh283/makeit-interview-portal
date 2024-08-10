@@ -73,18 +73,18 @@
     <div class="sidebar">
         <h2>Dashboard</h2>
         <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="add_question_form.html">Add Question</a></li>
-            <li><a href="view_questions.php">View Questions</a></li>
-            <li><a href="settings.php">Settings</a></li>
-            <li><a href="profile.php">Profile</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="index.php" target="_blank">Home</a></li>
+            <li><a href="add_question_form.html" target="_blank">Add Question</a></li>
+            <li><a href="view_questions.php" target="_blank">View Questions</a></li>
+            <li><a href="settings.php" target="_blank">Settings</a></li>
+            <li><a href="profile.php" target="_blank">Profile</a></li>
+            <li><a href="logout.php" target="_blank">Logout</a></li>
         </ul>
     </div>
 
     <!-- Main Content Area -->
     <div class="main-content">
-        <h1>Welcome to Your Makeit</h1>
+        <h1>Welcome to Your Dashboard</h1>
         <p>This is the main content area where you can manage your interview platform.</p>
         <!-- You can add more sections or content here -->
     </div>
