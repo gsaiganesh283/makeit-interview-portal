@@ -1,6 +1,6 @@
 <?php
 // Database connection settings
-$servername = "localhost"; // Your database server
+$servername = "127.0.0.1:3306"; // Your database server
 $username = "root"; // Your database username
 $password = ""; // Your database password
 $dbname = "interview_platform"; // Your database name
@@ -42,27 +42,30 @@ $conn->close();
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+    <style>
+        #code-editor {
+            height: 400px; /* Adjust height as needed */
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <header>
-            <h1>MakeIT</h1>
-            <button class="back-button">Back to Dashboard</button>
-        </header>
         <main>
             <div class="screen" id="screen-1">
                 <div class="code-section">
                     <div class="question-section">
-                        <h2><?php echo $title; ?></h2>
-                        <p><?php echo $description; ?></p>
-                        <p><strong>Example:</strong> <?php echo $example; ?></p>
+                        <h2><?php echo htmlspecialchars($title); ?></h2>
+                        <p><?php echo nl2br(htmlspecialchars($description)); ?></p>
+                        <p><strong>Example:</strong> <?php echo nl2br(htmlspecialchars($example)); ?></p>
                     </div>
 
                     <select id="language-selector">
                         <option value="c">C</option>
                         <option value="cpp">C++</option>
-                        <option value="python">Python</option>
+                        <option value="python" selected>Python</option>
                         <option value="java">Java</option>
                         <option value="javascript">JavaScript</option>
                     </select>
@@ -133,7 +136,53 @@ $conn->close();
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
-    <script src="scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/java/java.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
+                lineNumbers: true,
+                mode: "python", // Default mode
+                theme: "dracula",
+                indentUnit: 4
+            });
+
+            var templates = {
+                c: '#include <stdio.h>\n\nint main() {\n    // Your code here\n    return 0;\n}',
+                cpp: '#include <iostream>\n\nint main() {\n    // Your code here\n    return 0;\n}',
+                python: 'def main():\n    # Your code here\n    pass\n\nif __name__ == "__main__":\n    main()',
+                java: 'public class Main {\n    public static void main(String[] args) {\n        // Your code here\n    }\n}',
+                javascript: 'function main() {\n    // Your code here\n}\n\nmain();'
+            };
+
+            document.getElementById("language-selector").addEventListener("change", function() {
+                var language = this.value;
+                var mode = '';
+
+                switch(language) {
+                    case 'c':
+                        mode = 'text/x-csrc';
+                        break;
+                    case 'cpp':
+                        mode = 'text/x-c++src';
+                        break;
+                    case 'python':
+                        mode = 'python';
+                        break;
+                    case 'java':
+                        mode = 'text/x-java';
+                        break;
+                    case 'javascript':
+                        mode = 'javascript';
+                        break;
+                }
+
+                editor.setOption("mode", mode);
+                editor.setValue(templates[language]);
+            });
+        });
+    </script>
 </body>
 
 </html>
