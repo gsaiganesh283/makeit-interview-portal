@@ -4,30 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add a New Question</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+        }
+
+        .sidebar ul li {
+            padding: 15px 10px;
+            text-align: center;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #34495e;
+            border-radius: 5px;
+        }
+
+        /* Main content styles */
+        .main-content {
+            margin-left: 250px; /* Same as sidebar width */
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+
+        .main-content h1 {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Add a New Question</h1>
-        <form action="add_question.php" method="POST">
-            <label for="title">Question Title:</label>
-            <input type="text" id="title" name="title" required>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="add_question_form.html">Add Question</a></li>
+            <li><a href="view_questions.php">View Questions</a></li>
+            <li><a href="settings.php">Settings</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </div>
 
-            <label for="description">Question Description:</label>
-            <textarea id="description" name="description" required></textarea>
-
-            <label for="example">Example:</label>
-            <textarea id="example" name="example"></textarea>
-
-            <button type="submit">Add Question</button>
-        </form>
-
-        <!-- Link to the Dashboard -->
-        <p>
-            <a href="dashboard.php">Back to Dashboard</a>
-        </p>
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <h1>Welcome to Your Makeit</h1>
+        <p>This is the main content area where you can manage your interview platform.</p>
+        <!-- You can add more sections or content here -->
     </div>
 </body>
 
