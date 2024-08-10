@@ -1,6 +1,6 @@
 <?php
 // Database connection settings
-$servername = "127.0.0.1:3306"; // Your database server
+$servername = "localhost"; // Your database server
 $username = "root"; // Your database username
 $password = ""; // Your database password
 $dbname = "interview_platform"; // Your database name
@@ -71,25 +71,12 @@ $conn->close();
                     </select>
 
                     <textarea id="code-editor" placeholder="Write your code here..."></textarea>
-                    
-
-                    <div class="boxes-container">
-                        <div class="box" id="box-1">Test Case 1:
-                            <p>Input: 2 4</p>
-                            <p>Output: 2</p>
-                        </div>
-                        <div class="box" id="box-2">Test Case 2:
-                            <p>Input: 3 9</p>
-                            <p>Output: 3</p>
-                        </div>
-                    </div>
-
                     <div class="code-controls">
-                        <button class="run-button" id="run-button">Run</button>
+                        <button class="run-button">Run</button>
                         <button class="reset-button" id="reset-button">Reset</button>
                         <button class="submit-button">Submit</button>
                     </div>
-                    
+
                     <div class="output-section">
                         <h3>Output:</h3>
                         <pre id="output"></pre>
@@ -152,99 +139,7 @@ $conn->close();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/clike/clike.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/java/java.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    var editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
-        lineNumbers: true,
-        mode: "python", // Default mode
-        theme: "dracula",
-        indentUnit: 4
-    });
-
-    var templates = {
-        c: '#include <stdio.h>\n\nint main() {\n    // Your code here\n    return 0;\n}',
-        cpp: '#include <iostream>\n\nint main() {\n    // Your code here\n    return 0;\n}',
-        python: 'def main():\n    # Your code here\n    pass\n\nif __name__ == "__main__":\n    main()',
-        java: 'public class Main {\n    public static void main(String[] args) {\n        // Your code here\n    }\n}',
-        javascript: 'function main() {\n    // Your code here\n}\n\nmain();'
-    };
-
-    document.getElementById("language-selector").addEventListener("change", function() {
-        var language = this.value;
-        var mode = '';
-
-        switch(language) {
-            case 'c':
-                mode = 'text/x-csrc';
-                break;
-            case 'cpp':
-                mode = 'text/x-c++src';
-                break;
-            case 'python':
-                mode = 'python';
-                break;
-            case 'java':
-                mode = 'text/x-java';
-                break;
-            case 'javascript':
-                mode = 'javascript';
-                break;
-        }
-
-        editor.setOption("mode", mode);
-        editor.setValue(templates[language]);
-    });
-
-    // Handle reset button click
-    document.getElementById("reset-button").addEventListener("click", function() {
-        var language = document.getElementById("language-selector").value;
-        editor.setValue(templates[language]); // Reset the editor content to the template
-    });
-
-    // Handle run button click
-    document.getElementById("run-button").addEventListener("click", function() {
-    var code = editor.getValue();
-    var language = document.getElementById("language-selector").value;
-
-    fetch('/run', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            code: code,
-            language: language
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);  // Log the entire response for debugging
-        const outputElement = document.getElementById("output");
-        if (data.error) {
-            outputElement.textContent = `Error: ${data.error}`;
-        } else {
-            outputElement.textContent = `Output:\n${data.output}`;
-        }
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-});
-
-});
-
-
-    </script>
-
-    <script>
-        var timeoutDuration = 1800 * 1000; // 30 minutes in milliseconds
-        var warningDuration = 60 * 1000; // 1 minute before timeout
-
-        setTimeout(function() {
-            alert('Your session is about to expire. Please save your work.');
-        }, timeoutDuration - warningDuration);
-    </script>
-
+    <script src="scripts.js"></script>
 </body>
 
 </html>
