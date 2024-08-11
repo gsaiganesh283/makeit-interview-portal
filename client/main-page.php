@@ -1,6 +1,6 @@
 <?php
 // Database connection settings
-$servername = "127.0.0.1:3307"; // Your database server
+$servername = "127.0.0.1:3306"; // Your database server
 $username = "root"; // Your database username
 $password = ""; // Your database password
 $dbname = "interview_platform"; // Your database namex
@@ -29,6 +29,37 @@ if ($result->num_rows > 0) {
     $example = "";
 }
 
+// $conn->close();
+
+$id = 1; // Change this as needed
+
+// SQL query to fetch test cases for the given question_id
+$sql = "SELECT input, output FROM testcases WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Check if there are any test cases
+if ($result->num_rows > 0) {
+
+    $row=$result->fetch_assoc();
+    $input=$row['input'];
+    $output=$row['output'];
+    // Fetch all test cases
+    // $testcases = [];
+    // while ($row = $result->fetch_assoc()) {
+
+        // $testcases[] = [
+        //     'input' => $row['input'],
+        //     'output' => $row['output']
+        // ];
+    // }
+} else {
+    echo "No test cases found.";
+}
+
+$stmt->close();
 $conn->close();
 ?>
 
@@ -84,8 +115,9 @@ $conn->close();
                     </div>
 
                     <div class="boxes-container">
-                        <div class="box" id="box-1"><h4>Test Case 1: </h4><br><p class="para">Input: <?php echo htmlspecialchars($input); ?></p>
-                            <p class="para">Output: <?php echo htmlspecialchars($output); ?></p>
+                        <div class="box" id="box-1"><h4>Test Case 1: </h4><br>
+                            <p class="para">Input: <?php echo nl2br(htmlspecialchars($input)); ?></p>
+                            <p class="para">Output: <?php echo nl2br(htmlspecialchars($output)); ?></p>
                         </div>
                         <div class="box" id="box-2"><h4>Test Case 2: </h4><br>
                             <p class="para">Input: <?php echo htmlspecialchars($input); ?></p>
