@@ -24,7 +24,7 @@ main {
 .container {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 60px); /* Adjust this value based on the height of your header */
+  height: calc(100vh - 60px);
 }
 
 /* Body Styling */
@@ -81,22 +81,29 @@ main {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border-right: 2px solid #3a3a5c;
+  background-color: #182037;
+  max-height: 100%; 
   overflow-y: auto;
-  max-height: 200vh; /* Adjust based on header height */
+  border-radius: 5px;
   position: sticky;
-  top: 0;
-  background-color: #182037; /* Same as body to blend */
+  border-right: 2px solid #3a3a5c;
 }
 
 .chat-section {
-  flex: 1;
+  flex: 1; 
   display: flex;
   flex-direction: column;
   padding: 20px;
-  overflow-y: auto;
-  max-height: 100vh;
+  background-color: #25253a;
+  max-height: calc(100vh - 60px);
   border-left: 2px solid #3a3a5c;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.code-controls{
+  margin-left: 30vh;
 }
 
 
@@ -110,7 +117,7 @@ main {
 #listen-button, #send-button {
   background-color: #f2709c;
   border: none;
-  padding: 20px 100px;
+  padding: 15px 100px;
   color: white;
   cursor: pointer;
 }
@@ -126,7 +133,7 @@ main {
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 /* Question Section */
@@ -190,7 +197,7 @@ button {
   padding: 10px;
   color: #ffffff;
   max-height: 200px;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 /* Interviewer Section */
@@ -262,7 +269,7 @@ button {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .box {
