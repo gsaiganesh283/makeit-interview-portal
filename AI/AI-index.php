@@ -74,7 +74,7 @@
         <h2>Dashboard</h2>
         <ul>
             <li><a href="AI-index.php" target="_blank">Home</a></li>
-            <li><a href="add_question.php" target="_blank">Add Question</a></li>
+            <li><a href="add_questions.php" target="_blank">Add Question</a></li>
             <li><a href="view_questions.php" target="_blank">View Questions</a></li>
             <li><a href="settings.php" target="_blank">Settings</a></li>
             <li><a href="profile.php" target="_blank">Profile</a></li>
