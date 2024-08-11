@@ -1,6 +1,6 @@
 <?php
 // Database configuration
-$servername = "127.0.0.1:3306";
+$servername = "127.0.0.1:3307";
 $username = "root";  // Replace with your database username
 $password = "";  // Replace with your database password
 $dbname = "interview_platform";
