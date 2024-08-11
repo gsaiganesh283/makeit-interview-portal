@@ -48,8 +48,8 @@ $conn->close();
     <div class="container">
         <h1>Question Submission</h1>
         <p><?php echo isset($message) ? $message : ''; ?></p>
-        <a href="add_question_form.html">Add another question</a>
-        <a href="index.php">Back to Dashboard</a>
+        <a href="add_questions.php">Add another question</a>
+        <a href="AI-index.php">Back to Dashboard</a>
     </div>
 </body>
 
