@@ -52,11 +52,11 @@ $conn->close();
 </head>
 
 <body>
-    <div class="container">
-     <header>
-         <h1>MakeIT</h1>
+<header>
+    <h1>MakeIT</h1>
          <button class="back-button">Back to Dashboard</button>
      </header>
+    <div class="container">
         <main>
             <div class="screen" id="screen-1">
                 <div class="code-section">
@@ -76,13 +76,6 @@ $conn->close();
 
                     <textarea id="code-editor" placeholder="Write your code here..."></textarea>
                     
-
-                    <div class="code-controls">
-                        <button class="run-button">Run</button>
-                        <button class="reset-button" id="reset-button">Reset</button>
-                        <button class="submit-button">Submit</button>
-                    </div>
-
                     <div class="boxes-container">
                         <div class="box" id="box-1"><h4>Test Case 1: </h4><br><p class="para">Input: <?php echo htmlspecialchars($input); ?></p>
                             <p class="para">Output: <?php echo htmlspecialchars($output); ?></p>
@@ -91,6 +84,11 @@ $conn->close();
                             <p class="para">Input: <?php echo htmlspecialchars($input); ?></p>
                             <p class="para">Output: <?php echo htmlspecialchars($output); ?></p>
                         </div>
+                    </div>
+                    <div class="code-controls">
+                        <button class="run-button">Run</button>
+                        <button class="reset-button" id="reset-button">Reset</button>
+                        <button class="submit-button">Submit</button>
                     </div>
 
 

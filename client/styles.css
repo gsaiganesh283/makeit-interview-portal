@@ -1,8 +1,30 @@
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 99%;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #25253a;
+  border-bottom: 2px solid #3a3a5c;
+  z-index: 1000;
+}
+
+/* Adjust the main content to account for the fixed header */
+main {
+  display: flex;
+  flex: 1;
+  padding-top: 60px; /* Adjust this value based on the height of your header */
+}
+
+/* Adjust container height to fill the viewport excluding the header */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px); /* Adjust this value based on the height of your header */
 }
 
 /* Body Styling */
@@ -17,22 +39,6 @@ body {
   height: 100vh;
 }
 
-/* Container */
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-/* Header */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #25253a;
-  border-bottom: 2px solid #3a3a5c;
-}
 
 header h1 {
   margin: 0;
@@ -45,8 +51,9 @@ header h1 {
   border: none;
   padding: 10px 15px;
   color: white;
-  cursor: pointer;
+  cursor: pointer; /* Automatically pushes the button to the right end */
 }
+
 
 /* Main Content */
 main {
@@ -69,27 +76,29 @@ main {
 }
 
 /* Code and Chat Sections */
- .chat-section {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  overflow-y: auto;
-  max-height: 100vh;
-}
 .code-section {
   flex: 2;
   display: flex;
   flex-direction: column;
   padding: 20px;
   border-right: 2px solid #3a3a5c;
-  overflow-y: auto; 
-  max-height: 100vh; 
+  overflow-y: auto;
+  max-height: 200vh; /* Adjust based on header height */
+  position: sticky;
+  top: 0;
+  background-color: #182037; /* Same as body to blend */
 }
 
 .chat-section {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 150vh;
   border-left: 2px solid #3a3a5c;
 }
+
 
 .question-section, .output-section, .review-section, .detailed-feedback, .recommendations, .skill-chart, .box {
   background-color: #2b2b3b;
@@ -101,7 +110,7 @@ main {
 #listen-button, #send-button {
   background-color: #f2709c;
   border: none;
-  padding: 15px 20px;
+  padding: 20px 50px;
   color: white;
   cursor: pointer;
 }
@@ -165,6 +174,7 @@ button {
 
 .run-button, .reset-button, .submit-button {
   margin-right: 20px;
+  padding:10px 50px;
 }
 /* Output Section */
 .output-section h3 {
@@ -252,13 +262,14 @@ button {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  overflow-y: auto;
 }
 
 .box {
   background-color: #2b2b3b;
   padding: 10px;
   border-radius: 5px;
-  width: 48%;
+  width: 45%;
 }
 
 footer{
