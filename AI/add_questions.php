@@ -126,21 +126,6 @@ $conn->close();
             <label for="example">Example:</label>
             <textarea id="example" name="example"></textarea>
 
-            <div id="test-cases-container">
-            <h3>Test Cases</h3>
-            <div class="test-case">
-                <label for="test_input_1">Test Case 1 Input</label>
-                <textarea id="test_input_1" name="test_input[]" placeholder="Enter test case input" required></textarea>
-
-                <label for="test_output_1">Test Case 1 Expected Output</label>
-                <textarea id="test_output_1" name="test_output[]" placeholder="Enter expected output" required></textarea>
-            </div>
-        </div>
-
-        <button type="button" id="add-test-case">Add Another Test Case</button>
-
-        <button type="submit">Add Question</button>
-
             <button type="submit">Add Question</button>
         </form>
     </div>
