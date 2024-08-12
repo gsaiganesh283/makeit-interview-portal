@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 10, 2024 at 09:59 AM
+-- Generation Time: Aug 12, 2024 at 07:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,103 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `aiusers`
+-- Table structure for table `testcases`
 --
 
-CREATE TABLE `aiusers` (
+CREATE TABLE `testcases` (
   `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `input1` varchar(255) NOT NULL,
+  `input2` varchar(255) NOT NULL,
+  `output1` varchar(255) NOT NULL,
+  `output2` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `aiusers`
+-- Dumping data for table `testcases`
 --
 
-INSERT INTO `aiusers` (`id`, `username`, `password`, `created_at`) VALUES
-(1, 'testuser1', '$2y$10$wNn6YHR/Rl9x9s.uwCB.kOecAEiR/TZHpJWRGRwXfcoLeW4pKFlWa', '2024-08-10 06:49:33'),
-(2, 'testuser2', '$2y$10$lt/UCyXfFVhzxyT1vKp.u.TlgP48S0Gk53Hqf4RtM3iViLEuFfRli', '2024-08-10 06:49:33');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `clientusers`
---
-
-CREATE TABLE `clientusers` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `email` text NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `clientusers`
---
-
-INSERT INTO `clientusers` (`id`, `username`, `email`, `password`, `created_at`) VALUES
-(1, 'testuser1', '', '$2y$10$wNn6YHR/Rl9x9s.uwCB.kOecAEiR/TZHpJWRGRwXfcoLeW4pKFlWa', '2024-08-10 06:49:04'),
-(2, 'testuser2', '', '$2y$10$lt/UCyXfFVhzxyT1vKp.u.TlgP48S0Gk53Hqf4RtM3iViLEuFfRli', '2024-08-10 06:49:04'),
-(3, 'saiganesh', 'gg4906@srmist.edu.in', '$2y$10$Cjeb7tMVWqZj7Z90sPbL0OzMO02MNsjx7vc5McdP6j6xK38as/6Bi', '2024-08-10 07:04:38');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `questions`
---
-
-CREATE TABLE `questions` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `example` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `questions`
---
-
-INSERT INTO `questions` (`id`, `title`, `description`, `example`) VALUES
-(1, 'Arrays & Hashing: Simplifying Email Addresses', 'Write a function to simplify email addresses by removing unnecessary characters.', 'Given the input `[\"test.email+alex@leetcode.com\",\"test.e.mail+bob.cathy@leetcode.com\",\"testemail+david@lee.tcode.com\"]`, the function should return `2` because `testemail@leetcode.com` and `testemail@lee.tcode.com` are unique.'),
-(2, 'hi', 'hi', 'hi');
+INSERT INTO `testcases` (`id`, `input1`, `input2`, `output1`, `output2`) VALUES
+(1, '8374966167', '6281718680', 'prabhakar', 'saiganesh');
 
 --
 -- Indexes for dumped tables
 --
 
--- Table structure for table `testcases`
-CREATE TABLE `testcases` (
-  `id` int(11) NOT NULL,
-  `input` varchar(50) NOT NULL,
-  `output` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Dumping data for table 'testcases'
-
-INSERT INTO `testcases` (`id`,`input`, `output`) VALUES
-('1','2 4', '2'),
-('2','3 9', '3');
-
 --
--- Indexes for table `aiusers`
+-- Indexes for table `testcases`
 --
-ALTER TABLE `aiusers`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indexes for table `clientusers`
---
-ALTER TABLE `clientusers`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indexes for table `questions`
---
-ALTER TABLE `questions`
+ALTER TABLE `testcases`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -128,22 +57,10 @@ ALTER TABLE `questions`
 --
 
 --
--- AUTO_INCREMENT for table `aiusers`
+-- AUTO_INCREMENT for table `testcases`
 --
-ALTER TABLE `aiusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `clientusers`
---
-ALTER TABLE `clientusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `questions`
---
-ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `testcases`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
