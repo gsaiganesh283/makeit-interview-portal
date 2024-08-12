@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 }
 
 // SQL query to get a question
-$sql = "SELECT title, description, example FROM questions WHERE id = 1"; // Change id as needed
+$sql = "SELECT title, description, example FROM questions WHERE id = 2"; // Change id as needed
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
 
 // $conn->close();
 
-$id = 1; // Change this as needed
+$id = 2; // Change this as needed
 
 // SQL query to fetch test cases for the given question_id
 $sql = "SELECT input1,input2,output1,output2 FROM testcases WHERE id = ?";
