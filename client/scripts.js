@@ -278,7 +278,14 @@ document.addEventListener("DOMContentLoaded", function() {
         editor.setOption("mode", mode);
         editor.setValue(templates[language]);
     });
+
+    document.getElementById("reset-button").addEventListener("click", function() {
+        var language = document.getElementById("language-selector").value;
+        editor.setValue(templates[language]);
+    });
 });
+
+
 
 
 
