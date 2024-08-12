@@ -5,7 +5,7 @@
 <?php
 session_start();
 // Database connection settings
-$servername = "127.0.0.1:3307"; // Your database server
+$servername = "127.0.0.1:3306"; // Your database server
 $username = "root"; // Your database username
 $password = ""; // Your database password
 $dbname = "interview_platform"; // Your database namexs
@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
 $id = 1; // Change this as needed
 
 // SQL query to fetch test cases for the given question_id
-$sql = "SELECT input, output FROM testcases WHERE id = ?";
+$sql = "SELECT input1,input2,output1,output2 FROM testcases WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -49,8 +49,10 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
 
     $row=$result->fetch_assoc();
-    $input=$row['input'];
-    $output=$row['output'];
+    $input1=$row['input1'];
+    $input2=$row['input2'];
+    $output1=$row['output1'];
+    $output2=$row['output2'];
     // Fetch all test cases
     // $testcases = [];
     // while ($row = $result->fetch_assoc()) {
@@ -88,10 +90,12 @@ $conn->close();
 </head>
 
 <body>
-<header>
-    <h1>MakeIT</h1>
-         <button class="back-button">Back to Dashboard</button>
-     </header>
+    <header>
+        <h1>
+            MakeIT
+        </h1>
+            <button class="back-button">Back to Dashboard</button>
+    </header>
     <div class="container">
         <main>
             <div class="screen" id="screen-1">
@@ -114,12 +118,12 @@ $conn->close();
                     
                     <div class="boxes-container">
                         <div class="box" id="box-1"><h4>Test Case 1: </h4><br>
-                            <p class="para">Input: <?php echo nl2br(htmlspecialchars($input)); ?></p>
-                            <p class="para">Output: <?php echo nl2br(htmlspecialchars($output)); ?></p>
+                            <p class="para">Input: <?php echo nl2br(htmlspecialchars($input1)); ?></p>
+                            <p class="para">Output: <?php echo nl2br(htmlspecialchars($output1)); ?></p>
                         </div>
                         <div class="box" id="box-2"><h4>Test Case 2: </h4><br>
-                            <p class="para">Input: <?php echo htmlspecialchars($input); ?></p>
-                            <p class="para">Output: <?php echo htmlspecialchars($output); ?></p>
+                            <p class="para">Input: <?php echo htmlspecialchars($input2); ?></p>
+                            <p class="para">Output: <?php echo htmlspecialchars($output2); ?></p>
                         </div>
                     </div>
                     <div class="code-controls">
