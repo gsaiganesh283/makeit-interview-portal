@@ -1,4 +1,8 @@
 <?php
+// require_once 'session_check.php';  // Include the session check
+?>
+
+<?php
 session_start(); // Start a session
 
 // Database configuration
