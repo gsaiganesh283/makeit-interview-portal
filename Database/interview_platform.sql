@@ -92,15 +92,16 @@ INSERT INTO `questions` (`id`, `title`, `description`, `example`) VALUES
 
 -- Table structure for table `testcases`
 CREATE TABLE `testcases` (
+  `id` int(11) NOT NULL,
   `input` varchar(50) NOT NULL,
   `output` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table 'testcases'
 
-INSERT INTO `testcases` (`input`, `output`) VALUES
-('2 4', '2'),
-('3 9', '3');
+INSERT INTO `testcases` (`id`,`input`, `output`) VALUES
+('1','2 4', '2'),
+('2','3 9', '3');
 
 --
 -- Indexes for table `aiusers`
