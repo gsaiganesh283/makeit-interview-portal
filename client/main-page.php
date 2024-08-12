@@ -1,4 +1,9 @@
 <?php
+// require_once 'session_check.php';  // Include the session check
+?>
+
+<?php
+session_start();
 // Database connection settings
 $servername = "127.0.0.1:3306"; // Your database server
 $username = "root"; // Your database username
