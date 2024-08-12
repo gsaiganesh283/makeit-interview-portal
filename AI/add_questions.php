@@ -1,6 +1,6 @@
 <?php
 // Database connection
-$servername = "127.0.0.1:3306";
+$servername = "127.0.0.1:3307";
 $username = "root";
 $password = "";
 $dbname = "interview_platform";
@@ -47,11 +47,8 @@ $conn->close();
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,20 +57,18 @@ $conn->close();
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: row;
             align-items: center;
             height: 100vh;
             background-color: #182037;
             margin: 0;
         }
         .container {
-            background-color: #fff;
-            border-radius: 8px;           
+            background-color: #ffff;
+            border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            width: 350px;
             margin-left: 250px;
-            padding: 30px;
+            width: 350px;
         }
         .container h2 {
             margin-top: 0;
@@ -112,23 +107,45 @@ $conn->close();
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>Add a New Question</h1>
-        <form action="add_question.php" method="POST">
-            <label for="title">Question Title:</label>
-            <input type="text" id="title" name="title" required>
 
-            <label for="description">Question Description:</label>
-            <textarea id="description" name="description" required></textarea>
+<div class="container">
+    <h2>Question Form</h2>
+    <form>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" placeholder="Enter the title">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="Enter the description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="example">Example</label>
+            <textarea id="example" placeholder="Enter an example"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit Question</button>
+    </form>
+</div>
 
-            <label for="example">Example:</label>
-            <textarea id="example" name="example"></textarea>
+<div class="container" style="margin-top: 20px;">
+    <h2>Test Case Form</h2>
+    <form>
+        <div class="form-group">
+            <label for="input1">Input 1</label>
+            <input type="text" id="input1" placeholder="Enter Input 1">
+        </div>
+        <div class="form-group">
+            <label for="input2">Input 2</label>
+            <input type="text" id="input2" placeholder="Enter Input 2">
+        </div>
+        <div class="form-group">
+            <label for="output">Expected Output</label>
+            <input type="text" id="output" placeholder="Enter Expected Output">
+        </div>
+        <button type="submit" class="submit-btn">Submit Test Case</button>
+    </form>
+</div>
 
-            <button type="submit">Add Question</button>
-        </form>
-    </div>
 </body>
-
 </html>
