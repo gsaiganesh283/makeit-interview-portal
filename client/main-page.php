@@ -5,7 +5,7 @@
 <?php
 session_start();
 // Database connection settings
-$servername = "127.0.0.1:3306"; // Your database server
+$servername = "127.0.0.1:3307"; // Your database server
 $username = "root"; // Your database username
 $password = ""; // Your database password
 $dbname = "interview_platform"; // Your database namexs
