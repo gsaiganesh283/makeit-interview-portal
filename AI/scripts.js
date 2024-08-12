@@ -222,3 +222,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.getElementById('add-test-case').addEventListener('click', function() {
+    var container = document.getElementById('test-cases-container');
+    var index = container.getElementsByClassName('test-case').length + 1;
+
+    var newTestCase = document.createElement('div');
+    newTestCase.className = 'test-case';
+
+    var inputLabel = document.createElement('label');
+    inputLabel.setAttribute('for', 'test_input_' + index);
+    inputLabel.textContent = 'Test Case ' + index + ' Input';
+    newTestCase.appendChild(inputLabel);
+
+    var inputTextarea = document.createElement('textarea');
+    inputTextarea.id = 'test_input_' + index;
+    inputTextarea.name = 'test_input[]';
+    inputTextarea.placeholder = 'Enter test case input';
+    inputTextarea.required = true;
+    newTestCase.appendChild(inputTextarea);
+
+    var outputLabel = document.createElement('label');
+    outputLabel.setAttribute('for', 'test_output_' + index);
+    outputLabel.textContent = 'Test Case ' + index + ' Expected Output';
+    newTestCase.appendChild(outputLabel);
+
+    var outputTextarea = document.createElement('textarea');
+    outputTextarea.id = 'test_output_' + index;
+    outputTextarea.name = 'test_output[]';
+    outputTextarea.placeholder = 'Enter expected output';
+    outputTextarea.required = true;
+    newTestCase.appendChild(outputTextarea);
+
+    container.appendChild(newTestCase);
+});
