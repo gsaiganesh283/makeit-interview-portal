@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 12, 2024 at 07:49 AM
+-- Generation Time: Aug 12, 2024 at 08:39 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,8 @@ CREATE TABLE `testcases` (
 --
 
 INSERT INTO `testcases` (`id`, `input1`, `input2`, `output1`, `output2`) VALUES
-(1, '8374966167', '6281718680', 'prabhakar', 'saiganesh');
+(1, '8374966167', '6281718680', 'prabhakar', 'saiganesh'),
+(2, '2 2 2 2 2', '1 1 1 1 1', '2', '1');
 
 --
 -- Indexes for dumped tables
@@ -60,7 +61,7 @@ ALTER TABLE `testcases`
 -- AUTO_INCREMENT for table `testcases`
 --
 ALTER TABLE `testcases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
