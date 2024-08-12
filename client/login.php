@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['loggedin_time'] = time();  // Set login time
-        header("Location: dashboard.php"); // Redirect to dashboard or any other page
+        header("Location: main-page.php"); // Redirect to dashboard or any other page
         exit();
     } else {
         $error_message = "Invalid username or password!";
